@@ -33,8 +33,18 @@ class Memorama {
         return Math.random() - 0.5;
       }
     }
-    console.log(this.totalCards)
+    this.Cardsnumber = this.totalCards.length;
+
+    let html = "";
+    this.totalCards.forEach((card) => {
+      html += `<div class="card">
+        <img class="card-img" src=${card.src}>
+        </div>`;
+    });
+
+    this.$cardsContainer.innerHTML = html
   }
 }
 
 new Memorama();
+ 
