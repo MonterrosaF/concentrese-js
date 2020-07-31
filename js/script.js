@@ -70,7 +70,19 @@ class Memorama {
     event.target.childNodes[1].style.display = "block";
   }
 
-  compareCards() {}
+  setSuccessfulPair() {}
+  reverseCard() {}
+
+  compareCards() {
+    if (this.cardVerifier.length == 2) {
+      if (this.cardVerifier[0] === this.cardVerifier[1]) {
+        this.setSuccessfulPair(this.pusherCards);
+      } else {
+        this.reverseCard(this.pusherCards);
+        this.errors++;
+      }
+    }
+  }
 }
 
 new Memorama();
