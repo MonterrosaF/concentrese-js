@@ -23,6 +23,7 @@ class Memorama {
   }
 
   async screenLoader() {
+    let html = "";
     const response = await fetch("../memo.json");
     const data = await response.json();
     this.totalCards = data;
@@ -35,16 +36,36 @@ class Memorama {
     }
     this.Cardsnumber = this.totalCards.length;
 
-    let html = "";
     this.totalCards.forEach((card) => {
       html += `<div class="card">
         <img class="card-img" src=${card.src}>
         </div>`;
     });
 
-    this.$cardsContainer.innerHTML = html
+    this.$cardsContainer.innerHTML = html;
+    this.startGame();
+  }
+
+  startGame() {
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.addEventListener("click", (event) => {
+        this.clickCard(event);
+      });
+    });
+  }
+
+  clickCard(event) {
+    let card = event.target;
+    let sourceImage = event.target.childNodes[1].attributes[1].value;
+    this.cardVerifier.push(sourceImage);
+    this.pusherCards.unshift(card);
+    this.compareCards();
+  }
+
+  compareCards() {
+      
   }
 }
 
 new Memorama();
- 
