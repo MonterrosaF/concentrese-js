@@ -25,7 +25,7 @@ h1 {
      font-size: 3.5rem;
 }
 
-div.contenedor-general {
+div.general-container {
      width: 1240px;
      max-width: 100%;
      margin: 0 auto;
@@ -33,19 +33,19 @@ div.contenedor-general {
      border: 2px dotted black;
 }
 
-h1.titulo {
+h1.title {
      text-align: center;
      margin: 2rem 0;
      display: block;
 }
 
-div.contenedor-tarjetas {
+div.cards-container {
      display: flex;
      justify-content: space-around;
      flex-wrap: wrap;
 }
 
-div.tarjeta {
+div.card {
      background-image: url(../img/cover.jpg);
      width: 12rem;
      height: 14rem;
@@ -61,7 +61,7 @@ div.tarjeta {
      position: relative;
 }
 
-img.tarjeta-img {
+img.card-img {
      display: none;
 }
 
@@ -71,7 +71,7 @@ img.tarjeta-img {
      display: block;
 }
 
-div.pantalla-bloqueada {
+div.locked-screen {
      position: absolute;
      top: 0;
      left: 0;
@@ -82,7 +82,7 @@ div.pantalla-bloqueada {
      display: none;
 }
 
-h2.mensaje {
+h2.message {
      font-size: 5rem;
      color: white;
      z-index: 10;
