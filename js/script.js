@@ -56,6 +56,7 @@ class Memorama {
   }
 
   clickCard(event) {
+    this.flipCardEfect(event);
     let card = event.target;
     let sourceImage = event.target.childNodes[1].attributes[1].value;
     this.cardVerifier.push(sourceImage);
@@ -63,9 +64,13 @@ class Memorama {
     this.compareCards();
   }
 
-  compareCards() {
-      
+  flipCardEfect(event) {
+    event.target.style.backgroundImage = "none";
+    event.target.style.backgroundColor = "white";
+    event.target.childNodes[1].style.display = "block";
   }
+
+  compareCards() {}
 }
 
 new Memorama();
