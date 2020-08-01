@@ -74,6 +74,7 @@ class Memorama {
     successfulPairs.forEach((card) => {
       card.classList.add("success");
       this.correctsImages.push(card);
+      this.winning();
     });
   }
 
@@ -96,6 +97,18 @@ class Memorama {
       }
       this.cardVerifier.splice(0);
       this.pusherCards.splice(0);
+    }
+  }
+
+  winning() {
+    if (this.correctsImages.length === this.Cardsnumber) {
+      setTimeout(() => {
+        this.$lockedScreen.style.display = "block";
+        this.$message.innerText = "¡Felicidades, Ganaste!";
+      }, 1000);
+      setTimeout(() => {
+        location.reload();
+      }, 4000);
     }
   }
 }
