@@ -70,8 +70,21 @@ class Memorama {
     event.target.childNodes[1].style.display = "block";
   }
 
-  setSuccessfulPair() {}
-  reverseCard() {}
+  setSuccessfulPair(successfulPairs) {
+    successfulPairs.forEach((card) => {
+      card.classList.add("success");
+      this.correctsImages.push(card);
+    });
+  }
+
+  reverseCard(cards) {
+    cards.forEach((card) => {
+      setTimeout(() => {
+        card.style.backgroundImage = "url(../img/cover.jpg)";
+        card.childNodes[1].style.display = "none";
+      }, 1000);
+    });
+  }
 
   compareCards() {
     if (this.cardVerifier.length == 2) {
@@ -81,6 +94,8 @@ class Memorama {
         this.reverseCard(this.pusherCards);
         this.errors++;
       }
+      this.cardVerifier.splice(0);
+      this.pusherCards.splice(0);
     }
   }
 }
