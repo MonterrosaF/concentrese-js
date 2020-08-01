@@ -7,6 +7,7 @@ class Memorama {
     this.difficultyLevel = "";
     this.correctsImages = [];
     this.pusherCards = [];
+    this.attempsNumber = 0;
 
     this.$generalContainer = document.querySelector(".general-container");
     this.$cardsContainer = document.querySelector(".cards-container");
@@ -19,8 +20,41 @@ class Memorama {
 
   eventsListener() {
     window.addEventListener("DOMContentLoaded", () => {
+      this.difficultySelection();
       this.screenLoader();
     });
+  }
+
+  difficultySelection() {
+    alert(
+      "Selecciona un nivel de dificultad, si no seleccionas ningun nivel, por defecto el nivel sera intermedio"
+    );
+    let dif;
+    dif = prompt(
+      "Selecciona un nivel, puedes escoger entre facil, medio o dificil"
+    );
+    if (!dif) {
+      this.attempsNumber = 5;
+      this.difficultyLevel = "Intermedio";
+    } else {
+      if (dif.toLowerCase() === "facil" || dif.toLowerCase() === "fácil") {
+        this.attempsNumber = 7;
+        this.difficultyLevel = "Fácil";
+      } else if (dif.toLowerCase() === "medio") {
+        this.attempsNumber = 5;
+        this.difficultyLevel = "Intermedio";
+      } else if (
+        dif.toLowerCase() === "dificil" ||
+        dif.toLowerCase() === "difícil"
+      ) {
+        this.attempsNumber = 3;
+        this.difficultyLevel = "Difícil";
+      } else {
+        this.attempsNumber = 5;
+        this.difficultyLevel = "Intermedio";
+      }
+    }
+    this.containerError();
   }
 
   async screenLoader() {
