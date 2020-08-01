@@ -23,6 +23,9 @@ class Memorama {
     window.addEventListener("DOMContentLoaded", () => {
       this.difficultySelection();
       this.screenLoader();
+      window.addEventListener('contextmenu', event => {
+        event.preventDefault()
+      }, false)
     });
   }
 
