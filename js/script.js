@@ -14,6 +14,7 @@ class Memorama {
     this.$lockedScreen = document.querySelector(".locked-screen");
     this.$message = document.querySelector(".message");
     this.$errorContainer = document.createElement("div");
+    this.$difficultLevel = document.createElement("div");
 
     this.eventsListener();
   }
@@ -55,6 +56,7 @@ class Memorama {
       }
     }
     this.containerError();
+    this.numberAttemps()
   }
 
   async screenLoader() {
@@ -151,7 +153,7 @@ class Memorama {
   }
 
   losing() {
-    if (this.errors === 5) {
+    if (this.errors === this.attempsNumber) {
       setTimeout(() => {
         this.$lockedScreen.style.display = "block";
         // this.$message.innerText = "¡Felicidades, Ganaste!";
@@ -170,6 +172,12 @@ class Memorama {
     this.$errorContainer.classList.add("error");
     this.errorIncrement();
     this.$generalContainer.appendChild(this.$errorContainer);
+  }
+
+  numberAttemps() {
+    this.$difficultLevel.classList.add("difficult-level");
+    this.$difficultLevel.innerHTML = `Nivel de dificultad: ${this.difficultyLevel}`;
+    this.$generalContainer.appendChild(this.$difficultLevel);
   }
 }
 
