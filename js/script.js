@@ -12,6 +12,7 @@ class Memorama {
     this.$cardsContainer = document.querySelector(".cards-container");
     this.$lockedScreen = document.querySelector(".locked-screen");
     this.$message = document.querySelector(".message");
+    this.$errorContainer = document.createElement("div");
 
     this.eventsListener();
   }
@@ -44,6 +45,7 @@ class Memorama {
 
     this.$cardsContainer.innerHTML = html;
     this.startGame();
+    this.containerError();
   }
 
   startGame() {
@@ -94,6 +96,8 @@ class Memorama {
       } else {
         this.reverseCard(this.pusherCards);
         this.errors++;
+        this.errorIncrement();
+        this.losing();
       }
       this.cardVerifier.splice(0);
       this.pusherCards.splice(0);
@@ -110,6 +114,28 @@ class Memorama {
         location.reload();
       }, 4000);
     }
+  }
+
+  losing() {
+    if (this.errors === 5) {
+      setTimeout(() => {
+        this.$lockedScreen.style.display = "block";
+        // this.$message.innerText = "¡Felicidades, Ganaste!";
+      }, 1000);
+      setTimeout(() => {
+        location.reload();
+      }, 4000);
+    }
+  }
+
+  errorIncrement() {
+    this.$errorContainer.innerText = `Errores: ${this.errors}`;
+  }
+
+  containerError() {
+    this.$errorContainer.classList.add("error");
+    this.errorIncrement();
+    this.$generalContainer.appendChild(this.$errorContainer);
   }
 }
 
